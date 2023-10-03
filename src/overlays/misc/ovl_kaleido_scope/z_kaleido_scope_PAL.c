@@ -2636,6 +2636,7 @@ void KaleidoScope_Update(PlayState* play) {
     s16 stepB;
     s16 stepA;
     s32 pad;
+	uintptr_t pauseMemoryUsageEndMax;
 
     if ((R_PAUSE_BG_PRERENDER_STATE >= PAUSE_BG_PRERENDER_READY) &&
         (((pauseCtx->state >= PAUSE_STATE_OPENING_1) && (pauseCtx->state <= PAUSE_STATE_SAVE_PROMPT)) ||
@@ -2677,7 +2678,17 @@ void KaleidoScope_Update(PlayState* play) {
             //! @bug messed up alignment, should match `ALIGN64`
             pauseCtx->playerSegment = (void*)(((uintptr_t)play->objectCtx.spaceStart + 0x30) & ~0x3F);
 
-            size1 = Player_InitPauseDrawData(play, pauseCtx->playerSegment, &pauseCtx->playerSkelAnime);
+            // The pause menu may not use more memory than available in the object space, if it overflows it overwrites
+			// important data and the game either crashes or stops working properly.
+			// The vanilla pause menu is very tight on memory and overflowing often happens in modding scenarios when
+			// adding stuff to Link's object.
+			// If you hit this assert, you probably want to make the object space bigger, see 'Object_InitBank'.
+			pauseMemoryUsageEndMax = (uintptr_t)play->objectCtx.spaceEnd;
+#define _REAL_ASSERT(cond, file, line) ASSERT(cond, #cond, file, line)
+#define ASSERT_PAUSE_MEMORY_NO_OVERFLOW(ptr, line) \
+    _REAL_ASSERT((uintptr_t)(ptr) <= pauseMemoryUsageEndMax, "z_kaleido_scope_PAL.c", line)
+	
+	        size1 = Player_InitPauseDrawData(play, pauseCtx->playerSegment, &pauseCtx->playerSkelAnime);
             osSyncPrintf("プレイヤー size1＝%x\n", size1);
 
             pauseCtx->iconItemSegment = (void*)ALIGN16((uintptr_t)pauseCtx->playerSegment + size1);
@@ -2697,6 +2708,7 @@ void KaleidoScope_Update(PlayState* play) {
             }
 
             pauseCtx->iconItem24Segment = (void*)ALIGN16((uintptr_t)pauseCtx->iconItemSegment + size0);
+			           ASSERT_PAUSE_MEMORY_NO_OVERFLOW(pauseCtx->iconItem24Segment, __LINE__);
 
             size = (uintptr_t)_icon_item_24_staticSegmentRomEnd - (uintptr_t)_icon_item_24_staticSegmentRomStart;
             osSyncPrintf("icon_item24 size=%x\n", size);
@@ -2704,6 +2716,7 @@ void KaleidoScope_Update(PlayState* play) {
                                     "../z_kaleido_scope_PAL.c", 3675);
 
             pauseCtx->iconItemAltSegment = (void*)ALIGN16((uintptr_t)pauseCtx->iconItem24Segment + size);
+			           ASSERT_PAUSE_MEMORY_NO_OVERFLOW(pauseCtx->iconItemAltSegment, __LINE__);
 
             switch (play->sceneId) {
                 case SCENE_DEKU_TREE:
@@ -2749,7 +2762,8 @@ void KaleidoScope_Update(PlayState* play) {
             }
 
             pauseCtx->iconItemLangSegment = (void*)ALIGN16((uintptr_t)pauseCtx->iconItemAltSegment + size2);
-
+			           ASSERT_PAUSE_MEMORY_NO_OVERFLOW(pauseCtx->iconItemLangSegment, __LINE__);
+					   
             if (gSaveContext.language == LANGUAGE_ENG) {
                 size = (uintptr_t)_icon_item_nes_staticSegmentRomEnd - (uintptr_t)_icon_item_nes_staticSegmentRomStart;
                 osSyncPrintf("icon_item_dungeon dungeon-size=%x\n", size);
@@ -2768,7 +2782,8 @@ void KaleidoScope_Update(PlayState* play) {
             }
 
             pauseCtx->nameSegment = (void*)ALIGN16((uintptr_t)pauseCtx->iconItemLangSegment + size);
-
+			           ASSERT_PAUSE_MEMORY_NO_OVERFLOW(pauseCtx->nameSegment, __LINE__);
+					   
             osSyncPrintf("サイズ＝%x\n", size2 + size1 + size0 + size);
             osSyncPrintf("item_name I_N_PT=%x\n", 0x800);
             Interface_SetDoAction(play, DO_ACTION_DECIDE);
@@ -2798,7 +2813,15 @@ void KaleidoScope_Update(PlayState* play) {
 
             sPreRenderCvg = (void*)ALIGN16((uintptr_t)pauseCtx->nameSegment +
                                            MAX(MAP_NAME_TEX1_SIZE, ITEM_NAME_TEX_SIZE) + MAP_NAME_TEX2_SIZE);
-
+			ASSERT_PAUSE_MEMORY_NO_OVERFLOW(sPreRenderCvg, __LINE__);
+			
+			{
+				//sPreRenderCvg is used to store a width*height I8 "image"
+				void* pauseMemoryUsageEnd = (u8*)sPreRenderCvg + (PAUSE_EQUIP_PLAYER_WIDTH * PAUSE_EQUIP_PLAYER_HEIGHT);
+				
+				ASSERT_PAUSE_MEMORY_NO_OVERFLOW(pauseMemoryUsageEnd, __LINE__);
+			}
+			
             PreRender_Init(&sPlayerPreRender);
             PreRender_SetValuesSave(&sPlayerPreRender, PAUSE_EQUIP_PLAYER_WIDTH, PAUSE_EQUIP_PLAYER_HEIGHT,
                                     pauseCtx->playerSegment, NULL, sPreRenderCvg);

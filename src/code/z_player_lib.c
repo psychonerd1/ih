@@ -11,12 +11,12 @@ typedef struct {
 FlexSkeletonHeader* gPlayerSkelHeaders[] = { &gLinkAdultSkel, &gLinkChildSkel };
 
 s16 sBootData[PLAYER_BOOTS_MAX][17] = {
-    { 200, 1000, 300, 700, 550, 270, 600, 350, 800, 600, -100, 600, 590, 750, 125, 200, 130 },
-    { 200, 1000, 300, 700, 550, 270, 1000, 0, 800, 300, -160, 600, 590, 750, 125, 200, 130 },
+    { 200, 1000, 300, 700, 550, 270, 600, 350, 800, 840, -100, 600, 590, 750, 125, 200, 130 },
+    { 220, 1000, 300, 700, 550, 270, 1000, 0, 800, 300, -160, 600, 590, 750, 125, 200, 130 },
     { 200, 1000, 300, 700, 550, 270, 600, 600, 800, 550, -100, 600, 540, 270, 25, 0, 130 },
     { 200, 1000, 300, 700, 380, 400, 0, 300, 800, 500, -100, 600, 590, 750, 125, 200, 130 },
     { 80, 800, 150, 700, 480, 270, 600, 50, 800, 550, -40, 400, 540, 270, 25, 0, 80 },
-    { 200, 1000, 300, 800, 500, 400, 800, 400, 800, 550, -100, 600, 540, 750, 125, 400, 200 },
+    { 300, 1000, 300, 700, 550, 270, 600, 350, 800, 1260, -100, 600, 590, 750, 125, 400, 130 },
 };
 
 // Used to map item actions to model groups
@@ -156,47 +156,47 @@ u8 gPlayerModelTypes[PLAYER_MODELGROUP_MAX][PLAYER_MODELGROUPENTRY_MAX] = {
 
 Gfx* sPlayerRightHandShieldDLs[PLAYER_SHIELD_MAX * 4] = {
     // PLAYER_SHIELD_NONE
-    gLinkAdultRightHandClosedNearDL,
+    gLinkAdultRightHandClosedNearDL_mesh,
     gLinkChildRightHandClosedNearDL,
-    gLinkAdultRightHandClosedFarDL,
+    NULL,
     gLinkChildRightHandClosedFarDL,
     // PLAYER_SHIELD_DEKU
-    gLinkAdultRightHandClosedNearDL,
+    gLinkAdultRightHandClosedNearDL_mesh,
     gLinkChildRightFistAndDekuShieldNearDL,
-    gLinkAdultRightHandClosedFarDL,
+    NULL,
     gLinkChildRightFistAndDekuShieldFarDL,
     // PLAYER_SHIELD_HYLIAN
-    gLinkAdultRightHandHoldingHylianShieldNearDL,
+    gLinkAdultRightHandHoldingHylianShieldNearDL_mesh,
     gLinkChildRightHandClosedNearDL,
-    gLinkAdultRightHandHoldingHylianShieldFarDL,
+    NULL,
     gLinkChildRightHandClosedFarDL,
     // PLAYER_SHIELD_MIRROR
-    gLinkAdultRightHandHoldingMirrorShieldNearDL,
+    gLinkAdultRightHandHoldingMirrorShieldNearDL_mesh,
     gLinkChildRightHandClosedNearDL,
-    gLinkAdultRightHandHoldingMirrorShieldFarDL,
+    NULL,
     gLinkChildRightHandClosedFarDL,
 };
 
 Gfx* D_80125D28[(PLAYER_SHIELD_MAX + 2) * 4] = {
     // PLAYER_SHIELD_NONE
-    gLinkAdultMasterSwordAndSheathNearDL,
+    gLinkAdultMasterSwordAndSheathNearDL_mesh,
     gLinkChildSwordAndSheathNearDL,
-    gLinkAdultMasterSwordAndSheathFarDL,
+    NULL,
     gLinkChildSwordAndSheathFarDL,
     // PLAYER_SHIELD_DEKU
-    gLinkAdultMasterSwordAndSheathNearDL,
+    gLinkAdultMasterSwordAndSheathNearDL_mesh,
     gLinkChildDekuShieldSwordAndSheathNearDL,
-    gLinkAdultMasterSwordAndSheathFarDL,
+    NULL,
     gLinkChildDekuShieldSwordAndSheathFarDL,
     // PLAYER_SHIELD_HYLIAN
-    gLinkAdultHylianShieldSwordAndSheathNearDL,
+    gLinkAdultHylianShieldSwordAndSheathNearDL_mesh,
     gLinkChildHylianShieldSwordAndSheathNearDL,
-    gLinkAdultHylianShieldSwordAndSheathFarDL,
+    NULL,
     gLinkChildHylianShieldSwordAndSheathFarDL,
     // PLAYER_SHIELD_MIRROR
-    gLinkAdultMirrorShieldSwordAndSheathNearDL,
+    gLinkAdultMirrorShieldSwordAndSheathNearDL_mesh,
     gLinkChildSwordAndSheathNearDL,
-    gLinkAdultMirrorShieldSwordAndSheathFarDL,
+    NULL,
     gLinkChildSwordAndSheathFarDL,
     // PLAYER_SHIELD_NONE (child, no sword)
     NULL,
@@ -212,24 +212,24 @@ Gfx* D_80125D28[(PLAYER_SHIELD_MAX + 2) * 4] = {
 
 Gfx* D_80125D88[(PLAYER_SHIELD_MAX + 2) * 4] = {
     // PLAYER_SHIELD_NONE
-    gLinkAdultSheathNearDL,
+    gLinkAdultSheathNearDL_mesh,
     gLinkChildSheathNearDL,
-    gLinkAdultSheathFarDL,
+    NULL,
     gLinkChildSheathFarDL,
     // PLAYER_SHIELD_DEKU
-    gLinkAdultSheathNearDL,
+    gLinkAdultSheathNearDL_mesh,
     gLinkChildDekuShieldAndSheathNearDL,
-    gLinkAdultSheathFarDL,
+    NULL,
     gLinkChildDekuShieldAndSheathFarDL,
     // PLAYER_SHIELD_HYLIAN
-    gLinkAdultHylianShieldAndSheathNearDL,
+    gLinkAdultHylianShieldAndSheathNearDL_mesh,
     gLinkChildHylianShieldAndSheathNearDL,
-    gLinkAdultHylianShieldAndSheathFarDL,
+    NULL,
     gLinkChildHylianShieldAndSheathFarDL,
     // PLAYER_SHIELD_MIRROR
-    gLinkAdultMirrorShieldAndSheathNearDL,
+    gLinkAdultMirrorShieldAndSheathNearDL_mesh,
     gLinkChildSheathNearDL,
-    gLinkAdultMirrorShieldAndSheathFarDL,
+    NULL,
     gLinkChildSheathFarDL,
     // PLAYER_SHIELD_NONE (child, no sword)
     NULL,
@@ -237,168 +237,168 @@ Gfx* D_80125D88[(PLAYER_SHIELD_MAX + 2) * 4] = {
     NULL,
     NULL,
     // PLAYER_SHIELD_DEKU (child, no sword)
-    gLinkAdultSheathNearDL,
+    gLinkAdultSheathNearDL_mesh,
     gLinkChildDekuShieldWithMatrixDL,
-    gLinkAdultSheathNearDL,
+    gLinkAdultSheathNearDL_mesh,
     gLinkChildDekuShieldWithMatrixDL,
 };
 
 Gfx* gPlayerLeftHandBgsDLs[] = {
     // biggoron sword
-    gLinkAdultLeftHandHoldingBgsNearDL,
+    gLinkAdultLeftHandHoldingBgsNearDL_mesh,
     gLinkChildLeftHandHoldingMasterSwordDL,
-    gLinkAdultLeftHandHoldingBgsFarDL,
+    NULL,
     gLinkChildLeftHandHoldingMasterSwordDL,
     // broken giant knife
-    gLinkAdultHandHoldingBrokenGiantsKnifeDL,
+    gLinkAdultHandHoldingBrokenGiantsKnifeDL_mesh,
     gLinkChildLeftHandHoldingMasterSwordDL,
-    gLinkAdultHandHoldingBrokenGiantsKnifeFarDL,
+    NULL,
     gLinkChildLeftHandHoldingMasterSwordDL,
 };
 
 Gfx* gPlayerLeftHandOpenDLs[] = {
-    gLinkAdultLeftHandNearDL,
+    gLinkAdultLeftHandNearDL_mesh,
     gLinkChildLeftHandNearDL,
-    gLinkAdultLeftHandFarDL,
+    NULL,
     gLinkChildLeftHandFarDL,
 };
 
 Gfx* gPlayerLeftHandClosedDLs[] = {
-    gLinkAdultLeftHandClosedNearDL,
+    gLinkAdultLeftHandClosedNearDL_mesh,
     gLinkChildLeftFistNearDL,
-    gLinkAdultLeftHandClosedFarDL,
+    NULL,
     gLinkChildLeftFistFarDL,
 };
 
 // Identical to `sPlayerLeftHandSwordDLs` and unused
 Gfx* sPlayerLeftHandSwordDLs2[] = {
-    gLinkAdultLeftHandHoldingMasterSwordNearDL,
+    gLinkAdultLeftHandHoldingMasterSwordNearDL_mesh,
     gLinkChildLeftFistAndKokiriSwordNearDL,
-    gLinkAdultLeftHandHoldingMasterSwordFarDL,
+    NULL,
     gLinkChildLeftFistAndKokiriSwordFarDL,
 };
 
 Gfx* sPlayerLeftHandSwordDLs[] = {
-    gLinkAdultLeftHandHoldingMasterSwordNearDL,
+    gLinkAdultLeftHandHoldingMasterSwordNearDL_mesh,
     gLinkChildLeftFistAndKokiriSwordNearDL,
-    gLinkAdultLeftHandHoldingMasterSwordFarDL,
+    NULL,
     gLinkChildLeftFistAndKokiriSwordFarDL,
 };
 
 Gfx* sPlayerRightHandOpenDLs[] = {
-    gLinkAdultRightHandNearDL,
+    gLinkAdultRightHandNearDL_mesh,
     gLinkChildRightHandNearDL,
-    gLinkAdultRightHandFarDL,
+    NULL,
     gLinkChildRightHandFarDL,
 };
 
 Gfx* sPlayerRightHandClosedDLs[] = {
-    gLinkAdultRightHandClosedNearDL,
+    gLinkAdultRightHandClosedNearDL_mesh,
     gLinkChildRightHandClosedNearDL,
-    gLinkAdultRightHandClosedFarDL,
+    NULL,
     gLinkChildRightHandClosedFarDL,
 };
 
 Gfx* sPlayerRightHandBowSlingshotDLs[] = {
-    gLinkAdultRightHandHoldingBowNearDL,
+    gLinkAdultRightHandHoldingBowNearDL_mesh,
     gLinkChildRightHandHoldingSlingshotNearDL,
-    gLinkAdultRightHandHoldingBowFarDL,
+    NULL,
     gLinkChildRightHandHoldingSlingshotFarDL,
 };
 
 Gfx* D_80125E78[] = {
-    gLinkAdultMasterSwordAndSheathNearDL,
+    gLinkAdultMasterSwordAndSheathNearDL_mesh,
     gLinkChildSwordAndSheathNearDL,
-    gLinkAdultMasterSwordAndSheathFarDL,
+    NULL,
     gLinkChildSwordAndSheathFarDL,
 };
 
 Gfx* D_80125E88[] = {
-    gLinkAdultSheathNearDL,
+    gLinkAdultSheathNearDL_mesh,
     gLinkChildSheathNearDL,
-    gLinkAdultSheathFarDL,
+    NULL,
     gLinkChildSheathFarDL,
 };
 
 Gfx* sPlayerWaistDLs[] = {
-    gLinkAdultWaistNearDL,
+    NULL,
     gLinkChildWaistNearDL,
-    gLinkAdultWaistFarDL,
+    NULL,
     gLinkChildWaistFarDL,
 };
 
 // Identical to `sPlayerRightHandBowSlingshotDLs` and unused
 Gfx* sPlayerRightHandBowSlingshotDLs2[] = {
-    gLinkAdultRightHandHoldingBowNearDL,
+    gLinkAdultRightHandHoldingBowNearDL_mesh,
     gLinkChildRightHandHoldingSlingshotNearDL,
-    gLinkAdultRightHandHoldingBowFarDL,
+    NULL,
     gLinkChildRightHandHoldingSlingshotFarDL,
 };
 
 Gfx* sPlayerRightHandOcarinaDLs[] = {
-    gLinkAdultRightHandHoldingOotNearDL,
+    gLinkAdultRightHandHoldingOotNearDL_mesh,
     gLinkChildRightHandHoldingFairyOcarinaNearDL,
-    gLinkAdultRightHandHoldingOotFarDL,
+    NULL,
     gLinkChildRightHandHoldingFairyOcarinaFarDL,
 };
 
 Gfx* sPlayerRightHandOotDLs[] = {
-    gLinkAdultRightHandHoldingOotNearDL,
+    gLinkAdultRightHandHoldingOotNearDL_mesh,
     gLinkChildRightHandAndOotNearDL,
-    gLinkAdultRightHandHoldingOotFarDL,
+    NULL,
     gLinkChildRightHandHoldingOOTFarDL,
 };
 
 Gfx* sPlayerRightHandHookshotDLs[] = {
-    gLinkAdultRightHandHoldingHookshotNearDL,
+    gLinkAdultRightHandHoldingHookshotNearDL_mesh,
     gLinkChildRightHandNearDL,
-    gLinkAdultRightHandHoldingHookshotNearDL, // The 'far' display list exists but is not used
+    gLinkAdultRightHandHoldingHookshotNearDL_mesh, // The 'far' display list exists but is not used
     gLinkChildRightHandFarDL,
 };
 
 Gfx* sPlayerLeftHandHammerDLs[] = {
-    gLinkAdultLeftHandHoldingHammerNearDL,
+    gLinkAdultLeftHandHoldingHammerNearDL_mesh,
     gLinkChildLeftHandNearDL,
-    gLinkAdultLeftHandHoldingHammerFarDL,
+    NULL,
     gLinkChildLeftHandFarDL,
 };
 
 Gfx* gPlayerLeftHandBoomerangDLs[] = {
-    gLinkAdultLeftHandNearDL,
+    gLinkAdultLeftHandNearDL_mesh,
     gLinkChildLeftFistAndBoomerangNearDL,
-    gLinkAdultLeftHandFarDL,
+    NULL,
     gLinkChildLeftFistAndBoomerangFarDL,
 };
 
 Gfx* sPlayerLeftHandBottleDLs[] = {
-    gLinkAdultLeftHandOutNearDL,
+    gLinkAdultLeftHandOutNearDL_mesh,
     gLinkChildLeftHandUpNearDL,
-    gLinkAdultLeftHandOutNearDL,
+    gLinkAdultLeftHandOutNearDL_mesh,
     gLinkChildLeftHandUpNearDL,
 };
 
 Gfx* sFirstPersonLeftForearmDLs[] = {
-    gLinkAdultRightArmOutNearDL,
+    gLinkAdultRightArmOutNearDL_mesh,
     NULL,
 };
 
 Gfx* sFirstPersonLeftHandDLs[] = {
-    gLinkAdultRightHandOutNearDL,
+    gLinkAdultRightHandOutNearDL_mesh,
     NULL,
 };
 
 Gfx* sFirstPersonRightShoulderDLs[] = {
-    gLinkAdultRightShoulderNearDL,
+    NULL,
     gLinkChildRightShoulderNearDL,
 };
 
 Gfx* sFirstPersonForearmDLs[] = {
-    gLinkAdultLeftArmOutNearDL,
+    gLinkAdultLeftArmOutNearDL_mesh,
     NULL,
 };
 
 Gfx* sFirstPersonRightHandHoldingWeaponDLs[] = {
-    gLinkAdultRightHandHoldingBowFirstPersonDL,
+    gLinkAdultRightHandHoldingBowFirstPersonDL_mesh,
     gLinkChildRightArmStretchedSlingshotDL,
 };
 
@@ -825,34 +825,29 @@ u8 sEyeMouthIndices[][2] = {
  * from adult Link's object are used here.
  */
 #ifndef AVOID_UB
-void* sEyeTextures[] = {
-    gLinkAdultEyesOpenTex,      gLinkAdultEyesHalfTex,  gLinkAdultEyesClosedfTex, gLinkAdultEyesRollLeftTex,
-    gLinkAdultEyesRollRightTex, gLinkAdultEyesShockTex, gLinkAdultEyesUnk1Tex,    gLinkAdultEyesUnk2Tex,
-};
 
-void* sMouthTextures[] = {
-    gLinkAdultMouth1Tex,
-    gLinkAdultMouth2Tex,
-    gLinkAdultMouth3Tex,
-    gLinkAdultMouth4Tex,
-};
 #else
 // Defining `AVOID_UB` will use a 2D array instead and properly use the child link pointers to allow for shifting.
-void* sEyeTextures[][8] = {
-    { gLinkAdultEyesOpenTex, gLinkAdultEyesHalfTex, gLinkAdultEyesClosedfTex, gLinkAdultEyesRollLeftTex,
-      gLinkAdultEyesRollRightTex, gLinkAdultEyesShockTex, gLinkAdultEyesUnk1Tex, gLinkAdultEyesUnk2Tex },
-    { gLinkChildEyesOpenTex, gLinkChildEyesHalfTex, gLinkChildEyesClosedfTex, gLinkChildEyesRollLeftTex,
-      gLinkChildEyesRollRightTex, gLinkChildEyesShockTex, gLinkChildEyesUnk1Tex, gLinkChildEyesUnk2Tex },
-};
+void* sEyeTextures[][8] = {{     gLinkAdultSkel_gLinkAdultSkel_eyes_open_ci8_png_rgba16_rgba16,
+    gLinkAdultSkel_eyes_half_ci8_rgba16,
+    gLinkAdultSkel_eyes_closed_ci8_rgba16,
+    gLinkAdultSkel_eyes_roll_left_ci8_rgba16,
+    gLinkAdultSkel_eyes_roll_right_ci8_rgba16,
+    gLinkAdultSkel_eyes_shock_ci8_rgba16,
+    gLinkAdultSkel_eyes_unk_1_ci8_rgba16,
+    gLinkAdultSkel_eyes_unk_2_ci8_rgba16,
+ },
+{ gLinkChildEyesOpenTex, gLinkChildEyesHalfTex, gLinkChildEyesClosedfTex, gLinkChildEyesRollLeftTex,
+      gLinkChildEyesRollRightTex, gLinkChildEyesShockTex, gLinkChildEyesUnk1Tex, gLinkChildEyesUnk2Tex }};
 
 void* sMouthTextures[][4] = {
-    { gLinkAdultMouth1Tex, gLinkAdultMouth2Tex, gLinkAdultMouth3Tex, gLinkAdultMouth4Tex },
+    { NULL, NULL, NULL, NULL },
     { gLinkChildMouth1Tex, gLinkChildMouth2Tex, gLinkChildMouth3Tex, gLinkChildMouth4Tex },
 };
 #endif
 
 Color_RGB8 sTunicColors[PLAYER_TUNIC_MAX] = {
-    { 30, 105, 27 }, // PLAYER_TUNIC_KOKIRI
+    { 203, 210, 219 }, // PLAYER_TUNIC_KOKIRI
     { 100, 20, 0 },  // PLAYER_TUNIC_GORON
     { 0, 60, 100 },  // PLAYER_TUNIC_ZORA
 };
@@ -1169,9 +1164,7 @@ s32 Player_OverrideLimbDrawGameplayDefault(PlayState* play, s32 limbIndex, Gfx**
             }
 
             *dList = *(dLists + sDListsLodOffset);
-        } else if (limbIndex == PLAYER_LIMB_WAIST) {
-            *dList = *(this->waistDLists + sDListsLodOffset);
-        }
+		}
     }
 
     return false;
@@ -1194,7 +1187,7 @@ s32 Player_OverrideLimbDrawGameplayFirstPerson(PlayState* play, s32 limbIndex, G
             *dList = sFirstPersonForearmDLs[(void)0, gSaveContext.save.linkAge];
         } else if (limbIndex == PLAYER_LIMB_R_HAND) {
             *dList = Player_HoldsHookshot(this)
-                         ? gLinkAdultRightHandHoldingHookshotFarDL
+                         ? gLinkAdultRightHandHoldingHookshotNearDL_mesh
                          : sFirstPersonRightHandHoldingWeaponDLs[(void)0, gSaveContext.save.linkAge];
         } else {
             *dList = NULL;
@@ -1704,8 +1697,6 @@ s32 Player_OverrideLimbDrawPause(PlayState* play, s32 limbIndex, Gfx** dList, Ve
         if ((type == PLAYER_MODELTYPE_SHEATH_18) || (type == PLAYER_MODELTYPE_SHEATH_19)) {
             dListOffset = playerSwordAndShield[1] * 4;
         }
-    } else if (limbIndex == PLAYER_LIMB_WAIST) {
-        type = gPlayerModelTypes[modelGroup][PLAYER_MODELGROUPENTRY_WAIST];
     } else {
         return false;
     }
@@ -1722,7 +1713,7 @@ void Player_DrawPauseImpl(PlayState* play, void* gameplayKeep, void* linkObject,
     // Note: the viewport x and y values are overwritten below, before usage
     static Vp viewport = { (PAUSE_EQUIP_PLAYER_WIDTH / 2) << 2, (PAUSE_EQUIP_PLAYER_HEIGHT / 2) << 2, G_MAXZ / 2, 0,
                            (PAUSE_EQUIP_PLAYER_WIDTH / 2) << 2, (PAUSE_EQUIP_PLAYER_HEIGHT / 2) << 2, G_MAXZ / 2, 0 };
-    static Lights1 lights1 = gdSPDefLights1(80, 80, 80, 255, 255, 255, 84, 84, 172);
+    static Lights1 lights1 = gdSPDefLights1(80, 80, 80, 255, 255, 255, 44, 44, 132);
     static Vec3f lightDir = { 89.8f, 0.0f, 89.8f };
     u8 playerSwordAndShield[2];
     Gfx* opaRef;

@@ -11365,7 +11365,7 @@ void Player_Draw(Actor* thisx, PlayState* play2) {
             (this->actor.projectedPos.z < 160.0f)) {
             lod = 0;
         } else {
-            lod = 1;
+            lod = 0;
         }
 
         func_80093C80(play);

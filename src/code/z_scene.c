@@ -52,21 +52,21 @@ void Object_InitContext(PlayState* play, ObjectContext* objectCtx) {
     s32 i;
 
     if (play2->sceneId == SCENE_HYRULE_FIELD) {
-        spaceSize = 1000 * 1024;
+        spaceSize = 1100 * 1024;
     } else if (play2->sceneId == SCENE_GANON_BOSS) {
         if (gSaveContext.sceneLayer != 4) {
-            spaceSize = 1150 * 1024;
+            spaceSize = 1250 * 1024;
         } else {
-            spaceSize = 1000 * 1024;
+            spaceSize = 1100 * 1024;
         }
     } else if (play2->sceneId == SCENE_SPIRIT_TEMPLE_BOSS) {
-        spaceSize = 1050 * 1024;
+        spaceSize = 1150 * 1024;
     } else if (play2->sceneId == SCENE_CHAMBER_OF_THE_SAGES) {
-        spaceSize = 1050 * 1024;
+        spaceSize = 1150 * 1024;
     } else if (play2->sceneId == SCENE_GANONDORF_BOSS) {
-        spaceSize = 1050 * 1024;
+        spaceSize = 1150 * 1024;
     } else {
-        spaceSize = 1000 * 1024;
+        spaceSize = 1100 * 1024;
     }
 
     objectCtx->numEntries = objectCtx->numPersistentEntries = 0;
