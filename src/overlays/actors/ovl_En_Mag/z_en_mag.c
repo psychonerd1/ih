@@ -124,9 +124,9 @@ void EnMag_Update(Actor* thisx, PlayState* play) {
                 this->effectPrimColor[0] = 170;
                 this->effectPrimColor[1] = 255.0f;
                 this->effectPrimColor[2] = 255.0f;
-                this->effectEnvColor[0] = 200.0f;
+                this->effectEnvColor[0] = 160.0f;
                 this->effectEnvColor[1] = 255.0f;
-                this->effectEnvColor[2] = 0;
+                this->effectEnvColor[2] = 255.0f;
 
                 this->globalState = MAG_STATE_DISPLAY;
                 sDelayTimer = 20;
@@ -382,9 +382,7 @@ void EnMag_DrawInner(Actor* thisx, PlayState* play, Gfx** gfxP) {
         0x19, 0x1B, 0x0E, 0x1C, 0x1C, 0x1C, 0x1D, 0x0A, 0x1B, 0x1D,
     };
     static void* effectMaskTextures[] = {
-        gTitleEffectMask00Tex, gTitleEffectMask01Tex, gTitleEffectMask02Tex,
-        gTitleEffectMask10Tex, gTitleEffectMask11Tex, gTitleEffectMask12Tex,
-        gTitleEffectMask20Tex, gTitleEffectMask21Tex, gTitleEffectMask22Tex,
+        gTitleEffectMask00Tex, gTitleEffectMask01Tex, gTitleEffectMask02Tex
     };
     EnMag* this = (EnMag*)thisx;
     Font* font = &this->font;
@@ -412,18 +410,16 @@ void EnMag_DrawInner(Actor* thisx, PlayState* play, Gfx** gfxP) {
                    255);
 
     if ((s16)this->effectPrimLodFrac != 0) {
-        for (k = 0, i = 0, rectTop = 0; i < 3; i++, rectTop += 64) {
-            for (j = 0, rectLeft = 56; j < 3; j++, k++, rectLeft += 64) {
+            for (j = 0, rectLeft = 80; j < 3; j++, k++, rectLeft += 64) {
                 EnMag_DrawEffectTextures(&gfx, effectMaskTextures[k], gTitleFlameEffectTex, 64, 64, 32, 32, rectLeft,
-                                         rectTop, 64, 64, 1024, 1024, 1, 1, k, this);
-            }
-        }
+                                         48, 64, 64, 1024, 1024, 1, 1, 0, this);
+			}
     }
 
     gDPSetPrimColor(gfx++, 0, 0, 255, 255, 255, (s16)this->mainAlpha);
 
     if ((s16)this->mainAlpha != 0) {
-        EnMag_DrawImageRGBA32(&gfx, 152, 100, (u8*)gTitleZeldaShieldLogoMQTex, 160, 160);
+        EnMag_DrawImageRGBA32(&gfx, 160, 80, (u8*)gTitleZeldaShieldLogoMQTex, 160, 64);
     }
 
     Gfx_SetupDL_39Ptr(&gfx);
@@ -443,20 +439,17 @@ void EnMag_DrawInner(Actor* thisx, PlayState* play, Gfx** gfxP) {
     gDPSetEnvColor(gfx++, 0, 0, 100, 255);
 
     if ((s16)this->mainAlpha != 0) {
-        EnMag_DrawTextureI8(&gfx, gTitleTheLegendOfTextTex, 72, 8, 146, 73, 72, 8, 1024, 1024);
-        EnMag_DrawTextureI8(&gfx, gTitleOcarinaOfTimeTMTextTex, 96, 8, 144, 127, 96, 8, 1024, 1024);
+        EnMag_DrawTextureI8(&gfx, gTitleTheLegendOfTextTex, 32, 8, 87, 61, 32, 8, 1024, 1024);
 
         gDPPipeSync(gfx++);
-        gDPSetPrimColor(gfx++, 0, 0, 100, 150, 255, (s16)this->mainAlpha);
+        gDPSetPrimColor(gfx++, 0, 0, 255, 215, 0, (s16)this->mainAlpha);
         gDPSetEnvColor(gfx++, 20, 80, 160, 255);
 
-        EnMag_DrawTextureI8(&gfx, gTitleTheLegendOfTextTex, 72, 8, 145, 72, 72, 8, 1024, 1024);
-        EnMag_DrawTextureI8(&gfx, gTitleOcarinaOfTimeTMTextTex, 96, 8, 143, 126, 96, 8, 1024, 1024);
+        EnMag_DrawTextureI8(&gfx, gTitleTheLegendOfTextTex, 32, 8, 86, 60, 32, 8, 1024, 1024);
 
         gDPPipeSync(gfx++);
         gDPSetPrimColor(gfx++, 0, 0, 255, 255, 255, (s16)this->subAlpha);
 
-        EnMag_DrawImageRGBA32(&gfx, 174, 145, (u8*)gTitleMasterQuestSubtitleTex, 128, 32);
     }
 
     Gfx_SetupDL_39Ptr(&gfx);

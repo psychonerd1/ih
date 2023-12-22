@@ -11,6 +11,7 @@
 #include "assets/scenes/overworld/spot18/spot18_scene.h"
 #include "assets/scenes/overworld/spot20/spot20_scene.h"
 #include "assets/scenes/overworld/souko/souko_scene.h"
+#include "assets/scenes/overworld/spot12/spot12_room_0.h"
 
 #include "assets/scenes/dungeons/men/men_scene.h"
 #include "assets/scenes/dungeons/ddan/ddan_scene.h"
@@ -1276,8 +1277,8 @@ void Scene_DrawConfigDesertColossus(PlayState* play) {
 }
 
 void* D_8012A380[] = {
-    gSpot12_009678Tex,
-    gSpot12_00DE78Tex,
+    spot12_dl_brickwall5_ci8,
+    spot12_dl_brickwall5_ci8,
 };
 
 void Scene_DrawConfigGerudosFortress(PlayState* play) {

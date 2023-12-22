@@ -711,6 +711,42 @@ beginseg
 endseg
 
 beginseg
+    name "ovl_En_Kadus"
+    include "build/src/overlays/actors/ovl_En_Kadus/z_en_kadus.o"
+    include "build/src/overlays/actors/ovl_En_Kadus/ovl_En_Kadus_reloc.o"
+endseg
+
+beginseg
+    name "ovl_En_Aza"
+    include "build/src/overlays/actors/ovl_En_Aza/z_en_aza.o"
+    include "build/src/overlays/actors/ovl_En_Aza/ovl_En_Aza_reloc.o"
+endseg
+
+beginseg
+    name "ovl_En_Lir"
+    include "build/src/overlays/actors/ovl_En_Lir/z_en_lir.o"
+    include "build/src/overlays/actors/ovl_En_Lir/ovl_En_Lir_reloc.o"
+endseg
+
+beginseg
+    name "ovl_En_Nir"
+    include "build/src/overlays/actors/ovl_En_Nir/z_en_nir.o"
+    include "build/src/overlays/actors/ovl_En_Nir/ovl_En_Nir_reloc.o"
+endseg
+
+beginseg
+    name "ovl_En_Met1"
+    include "build/src/overlays/actors/ovl_En_Met1/z_en_met1.o"
+    include "build/src/overlays/actors/ovl_En_Met1/ovl_En_Met1_reloc.o"
+endseg
+
+beginseg
+    name "ovl_En_Met2"
+    include "build/src/overlays/actors/ovl_En_Met2/z_en_met2.o"
+    include "build/src/overlays/actors/ovl_En_Met2/ovl_En_Met2_reloc.o"
+endseg
+
+beginseg
     name "ovl_Bg_Gnd_Iceblock"
     include "build/src/overlays/actors/ovl_Bg_Gnd_Iceblock/z_bg_gnd_iceblock.o"
     include "build/src/overlays/actors/ovl_Bg_Gnd_Iceblock/ovl_Bg_Gnd_Iceblock_reloc.o"
@@ -6050,6 +6086,48 @@ beginseg
 endseg
 
 beginseg
+    name "object_kad"
+    romalign 0x1000
+    include "build/assets/objects/object_kad/object_kad.o"
+    number 6
+endseg
+
+beginseg
+    name "object_aza"
+    romalign 0x1000
+    include "build/assets/objects/object_aza/object_aza.o"
+    number 6
+endseg
+
+beginseg
+    name "object_lir"
+    romalign 0x1000
+    include "build/assets/objects/object_lir/object_lir.o"
+    number 6
+endseg
+
+beginseg
+    name "object_nir"
+    romalign 0x1000
+    include "build/assets/objects/object_nir/object_nir.o"
+    number 6
+endseg
+
+beginseg
+    name "object_met1"
+    romalign 0x1000
+    include "build/assets/objects/object_met1/object_met1.o"
+    number 6
+endseg
+
+beginseg
+    name "object_met2"
+    romalign 0x1000
+    include "build/assets/objects/object_met2/object_met2.o"
+    number 6
+endseg
+
+beginseg
     name "g_pn_01"
     romalign 0x1000
     include "build/assets/textures/place_title_cards/g_pn_01.o"
@@ -8760,13 +8838,6 @@ beginseg
     name "spot12_room_0"
     romalign 0x1000
     include "build/assets/scenes/overworld/spot12/spot12_room_0.o"
-    number 3
-endseg
-
-beginseg
-    name "spot12_room_1"
-    romalign 0x1000
-    include "build/assets/scenes/overworld/spot12/spot12_room_1.o"
     number 3
 endseg
 
